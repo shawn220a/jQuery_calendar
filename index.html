@@ -20,20 +20,12 @@
   </div>
 </body>
 <script>
-  // let d = new Date();
 
-  let dateUpdate = setInterval(newDate(), 1000);
-
-  function newDate(){
+  setInterval( function newDate() {
+    $('#demo').empty();
     let d = new Date();
     $('#demo').append(d);
-  }
+  }, 1000);
 
-//   var myVar = setInterval(myTimer, 1000);
-
-// function myTimer() {
-//   var d = new Date();
-//   document.getElementById("demo").innerHTML = d.toLocaleTimeString();
-// }
 </script>
 </html>
