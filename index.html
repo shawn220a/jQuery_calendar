@@ -16,15 +16,19 @@
 <body>
   <div class="header">
     <h1>Today's Calendar</h1>
-    <p id="demo"></p>
+    <p id="date"></p>
+  </div>
+  <div class="hourlySchedule">
   </div>
 </body>
 <script>
 
-  setInterval( function newDate() {
-    $('#demo').empty();
-    let d = new Date();
-    $('#demo').append(d);
+  let date = $('#date');
+  date.text(Date());
+
+  setInterval( () => {
+    date.empty();
+    date.text(Date());
   }, 1000);
 
 </script>
