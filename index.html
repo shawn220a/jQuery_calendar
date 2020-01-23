@@ -40,7 +40,7 @@
     <div class="container">
 
       <!-- 0700 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="sevenAM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">0700</span>
         </div>
@@ -54,7 +54,7 @@
       </div>
 
       <!-- 0800 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="eightAM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">0800</span>
         </div>
@@ -68,7 +68,7 @@
       </div>
 
       <!-- 0900 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="nineAM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">0900</span>
         </div>
@@ -82,7 +82,7 @@
       </div>
 
       <!-- 1000 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="tenAM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1000</span>
         </div>
@@ -96,7 +96,7 @@
       </div>
 
       <!-- 1100 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="elevenAM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1100</span>
         </div>
@@ -110,7 +110,7 @@
       </div>
 
       <!-- 1200 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="twelvePM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1200</span>
         </div>
@@ -124,7 +124,7 @@
       </div>
 
       <!-- 1300 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="onePM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1300</span>
         </div>
@@ -138,7 +138,7 @@
       </div>
 
       <!-- 1400 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="twoPM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1400</span>
         </div>
@@ -152,7 +152,7 @@
       </div>
 
       <!-- 1500 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="threePM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1500</span>
         </div>
@@ -166,7 +166,7 @@
       </div>
 
       <!-- 1600 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="fourPM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1600</span>
         </div>
@@ -180,7 +180,7 @@
       </div>
 
       <!-- 1700 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="fivePM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1700</span>
         </div>
@@ -194,7 +194,7 @@
       </div>
 
       <!-- 1800 -->
-      <div class="input-group input-group-lg">
+      <div class="input-group input-group-lg" id="sixPM">
         <div class="input-group-prepend">
           <span class="input-group-text" id="inputGroup-sizing-lg">1800</span>
         </div>
@@ -212,12 +212,115 @@
     $(document).ready(() => {
       let date = $("#date");
 
+      // Get items from local Storage
+      let sevenAM = localStorage.getItem('0700');
+      let eightAM = localStorage.getItem('0800');
+      let nineAM = localStorage.getItem('0900');
+      let tenAM = localStorage.getItem('1000');
+      let elevenAM = localStorage.getItem('1100');
+      let twelvePM = localStorage.getItem('1200');
+      let onePM = localStorage.getItem('1300');
+      let twoPM = localStorage.getItem('1400');
+      let threePM = localStorage.getItem('1500');
+      let fourPM = localStorage.getItem('1600');
+      let fivePM = localStorage.getItem('1700');
+      let sixPM = localStorage.getItem('1800');
+
+      // Write items in local storage to the main page
+      $('#sevenAM input').val(sevenAM);
+      $('#eightAM input').val(eightAM);
+      $('#nineAM input').val(nineAM);
+      $('#tenAM input').val(tenAM);
+      $('#elevenAM input').val(elevenAM);
+      $('#twelvePM input').val(twelvePM);
+      $('#onePM input').val(onePM);
+      $('#twoPM input').val(twoPM);
+      $('#threePM input').val(threePM);
+      $('#fourPM input').val(fourPM);
+      $('#fivePM input').val(fivePM);
+      $('#sixPM input').val(sixPM);
+
+      // Initializes the date and time
       date.text(Date());
 
+      // Updates time by the second
       setInterval(() => {
         date.empty();
         date.text(Date());
       }, 1000);
+
+      // Saves 0700 item in local storage
+      $('#sevenAM button').click(function() {
+        let value = $('#sevenAM input').val();
+        localStorage.setItem('0700', value);
+      })
+
+      // Saves 0800 item in local storage
+      $('#eightAM button').click(function() {
+        let value = $('#eightAM input').val();
+        localStorage.setItem('0800', value);
+      })
+
+      // Saves 0900 item in local storage
+      $('#nineAM button').click(function() {
+        let value = $('#nineAM input').val();
+        localStorage.setItem('0900', value);
+      })
+
+      // Saves 1000 item in local storage
+      $('#tenAM button').click(function() {
+        let value = $('#tenAM input').val();
+        localStorage.setItem('1000', value);
+      })
+
+      // Saves 1100 item in local storage
+      $('#elevenAM button').click(function() {
+        let value = $('#elevenAM input').val();
+        localStorage.setItem('1100', value);
+      })
+
+      // Saves 1200 item in local storage
+      $('#twelvePM button').click(function() {
+        let value = $('#twelvePM input').val();
+        localStorage.setItem('1200', value);
+      })
+
+      // Saves 1300 item in local storage
+      $('#onePM button').click(function() {
+        let value = $('#onePM input').val();
+        localStorage.setItem('1300', value);
+      })
+
+      // Saves 1400 item in local storage
+      $('#twoPM button').click(function() {
+        let value = $('#twoPM input').val();
+        localStorage.setItem('1400', value);
+      })
+
+      // Saves 1500 item in local storage
+      $('#threePM button').click(function() {
+        let value = $('#threePM input').val();
+        localStorage.setItem('1500', value);
+      })
+
+      // Saves 1600 item in local storage
+      $('#fourPM button').click(function() {
+        let value = $('#fourPM input').val();
+        localStorage.setItem('1600', value);
+      })
+
+      // Saves 1700 item in local storage
+      $('#fivePM button').click(function() {
+        let value = $('#fivePM input').val();
+        localStorage.setItem('1700', value);
+      })
+
+      // Saves 1800 item in local storage
+      $('#sixPM button').click(function() {
+        let value = $('#sixPM input').val();
+        localStorage.setItem('1800', value);
+      })
+
     });
   </script>
 </html>
