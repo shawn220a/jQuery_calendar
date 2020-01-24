@@ -1,5 +1,24 @@
 $(document).ready(() => {
   let date = $("#date");
+  let currentHour = moment().format('ha');
+
+  // Color codes the input boxes for future, past, and current
+  var timeArr = $('input');
+  for (i = 0; i < timeArr.length; i++) {
+    let hour = $(timeArr[i]).attr('id');
+    let difference = moment(hour, 'ha').diff(moment(currentHour, 'ha'), 'hours');
+    if (difference < 0) {
+      $(timeArr[i]).css('background', '#d3d3d3');
+    } 
+    else if (difference === 0) {
+      $(timeArr[i]).css('background', 'red');
+      $(timeArr[i]).css('color', 'white');
+    } 
+    else {
+      $(timeArr[i]).css('background', 'green');
+      $(timeArr[i]).css('color', 'white');
+    }
+  }
 
   // Get items from local Storage
   let sevenAM = localStorage.getItem('0700');
